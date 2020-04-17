@@ -15,6 +15,7 @@
     "babel-core": "^6.26.3",
     "bootstrap": "^4.3.1",
     "browser-sync": "^2.26.7",
+    "clean-css": "^4.2.3",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-clean": "^0.4.0",
@@ -32,7 +33,7 @@
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.2",
     "main-bower-files": "^2.13.3",
-    "minimist": "^1.2.0",
+    "minimist": "^1.2.5",
     "node-sass": "^4.13.0"
   },
   "browserslist": [
