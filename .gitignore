@@ -1,4 +1,4 @@
-node_modules
+node_modules/
 .tmp
-source
-bower_components
+source/
+bower_components/

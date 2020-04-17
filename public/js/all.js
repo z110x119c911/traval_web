@@ -38,27 +38,45 @@ $(document).ready(function () {
 
       function Select_list() {
         $('#select_area').change(function (e) {
-          var choose = e.target.value;
+          //選取
+          var choose = $('#select_area').val();
+          var title = '';
           var str = '';
 
           for (var i = 0; i < items.length; i++) {
             if (choose == items[i].Zone) {
-              str += "<div class=\"col-md-6 pt-5 d-flex justify-content-center\">\n                                        <div class=\"card\" style=\"width: 24rem;\">\n                                            <img src=\"".concat(items[i].Picture1, "\" class=\"card-img-top\" alt=\"...\">\n                                            <div class=\"card-body\">\n                                                <h5 class=\"card-title\">").concat(items[i].Name, "</h5>\n                                                <p class=\"card-text\">").concat(items[i].Description, "</p>\n                                            </div>\n                                        </div>\n                                    </div>");
+              title = "<h1 class=\"text-primary text-center pt-5\">".concat(items[i].Zone, "</h1>");
+              str += "\n                                    <div class=\"col-md-6 pt-5 d-flex justify-content-center\">\n                                        <div class=\"card\" style=\"width: 24rem;\">\n                                            <img src=\"".concat(items[i].Picture1, "\" class=\"card-img-top\" alt=\"...\">\n                                            <div class=\"card-body\">\n                                                <h5 class=\"card-title\">").concat(items[i].Name, "</h5>\n                                                <p class=\"card-text\">").concat(items[i].Description, "</p>\n                                            </div>\n                                        </div>\n                                    </div>");
             }
           }
 
-          $('#information').append(str);
+          $('#information_title').empty();
+          $('#information_title').append(title);
+          $('#information').empty();
+          $('#information').append(str); //螢幕捲動
+
+          var windowHeight = $(window).height();
+          $('html,body').animate({
+            scrollTop: windowHeight
+          }, 500);
         });
       } //景點內容
+      // function info() {
+      //     for (var i = 0; i < items.length; i++) {
+      //         var str = '';
+      //         str += `<div class="col-md-6 pt-5 d-flex justify-content-center">
+      //                     <div class="card" style="width: 24rem;">
+      //                         <img src="${items[i].Picture1}" class="card-img-top" alt="...">
+      //                         <div class="card-body">
+      //                             <h5 class="card-title">${items[i].Name}</h5>
+      //                             <p class="card-text">${items[i].Description}</p>
+      //                         </div>
+      //                     </div>
+      //                 </div>`
+      //         $('#information').append(str);
+      //     }
+      // }
 
-
-      function info() {
-        for (var i = 0; i < items.length; i++) {
-          var str = '';
-          str += "<div class=\"col-md-6 pt-5 d-flex justify-content-center\">\n                                <div class=\"card\" style=\"width: 24rem;\">\n                                    <img src=\"".concat(items[i].Picture1, "\" class=\"card-img-top\" alt=\"...\">\n                                    <div class=\"card-body\">\n                                        <h5 class=\"card-title\">").concat(items[i].Name, "</h5>\n                                        <p class=\"card-text\">").concat(items[i].Description, "</p>\n                                    </div>\n                                </div>\n                            </div>");
-          $('#information').append(str);
-        }
-      }
     }
   });
 });

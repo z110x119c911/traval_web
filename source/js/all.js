@@ -25,16 +25,20 @@ $(document).ready(function () {
                     let str = '';
                     str += `<option value="${filterZone[i]}">${filterZone[i]}</option>`
                     $('#select_area').append(str);
-                }   
+                }
             }
             //List 選取
             function Select_list() {
                 $('#select_area').change(function(e){
-                    let choose = e.target.value;
+                    //選取
+                    let choose = $('#select_area').val();
+                    let title = '';
                     let str = '';
                     for (let i = 0; i < items.length; i++) {
                         if(choose == items[i].Zone){
-                            str += `<div class="col-md-6 pt-5 d-flex justify-content-center">
+                            title = `<h1 class="text-primary text-center pt-5">${items[i].Zone}</h1>`
+                            str += `
+                                    <div class="col-md-6 pt-5 d-flex justify-content-center">
                                         <div class="card" style="width: 24rem;">
                                             <img src="${items[i].Picture1}" class="card-img-top" alt="...">
                                             <div class="card-body">
@@ -43,29 +47,35 @@ $(document).ready(function () {
                                             </div>
                                         </div>
                                     </div>`
-                            
                         }
-                    }   
+                    }
+                    $('#information_title').empty();
+                    $('#information_title').append(title);
+                    $('#information').empty();
                     $('#information').append(str);
+
+                    //螢幕捲動
+                    let windowHeight = $(window).height();
+                    $('html,body').animate({ scrollTop: windowHeight }, 500);
                 })
             }
             
             //景點內容
-            function info() {
-                for (var i = 0; i < items.length; i++) {
-                    var str = '';
-                    str += `<div class="col-md-6 pt-5 d-flex justify-content-center">
-                                <div class="card" style="width: 24rem;">
-                                    <img src="${items[i].Picture1}" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">${items[i].Name}</h5>
-                                        <p class="card-text">${items[i].Description}</p>
-                                    </div>
-                                </div>
-                            </div>`
-                    $('#information').append(str);
-                }
-            }
+            // function info() {
+            //     for (var i = 0; i < items.length; i++) {
+            //         var str = '';
+            //         str += `<div class="col-md-6 pt-5 d-flex justify-content-center">
+            //                     <div class="card" style="width: 24rem;">
+            //                         <img src="${items[i].Picture1}" class="card-img-top" alt="...">
+            //                         <div class="card-body">
+            //                             <h5 class="card-title">${items[i].Name}</h5>
+            //                             <p class="card-text">${items[i].Description}</p>
+            //                         </div>
+            //                     </div>
+            //                 </div>`
+            //         $('#information').append(str);
+            //     }
+            // }
         })
     })
 });
