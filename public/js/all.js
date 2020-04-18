@@ -46,7 +46,7 @@ $(document).ready(function () {
           for (var i = 0; i < items.length; i++) {
             if (choose == items[i].Zone) {
               title = "<h1 class=\"text-primary text-center pt-5\">".concat(items[i].Zone, "</h1>");
-              str += "\n                                    <div class=\"col-md-6 pt-5 d-flex justify-content-center\">\n                                        <div class=\"card\" style=\"width: 24rem;\">\n                                            <img src=\"".concat(items[i].Picture1, "\" class=\"card-img-top\" alt=\"...\">\n                                            <div class=\"card-body\">\n                                                <h5 class=\"card-title\">").concat(items[i].Name, "</h5>\n                                                <p class=\"card-text\">").concat(items[i].Description, "</p>\n                                            </div>\n                                        </div>\n                                    </div>");
+              str += "\n                                    <div class=\"col-md-6 h-100 pt-5 d-flex justify-content-center\">\n                                        <div class=\"card\" style=\"width: 24rem;\">\n                                            <img src=\"".concat(items[i].Picture1, "\" class=\"card-img-top\" alt=\"...\">\n                                            <div class=\"card-body\">\n                                                <h5 class=\"card-title\">").concat(items[i].Name, "</h5>\n                                                <p class=\"card-text\">").concat(items[i].Description, "</p>\n                                            </div>\n                                        </div>\n                                    </div>");
             }
           }
 
@@ -60,24 +60,26 @@ $(document).ready(function () {
             scrollTop: windowHeight
           }, 500);
         });
-      } //景點內容
-      // function info() {
-      //     for (var i = 0; i < items.length; i++) {
-      //         var str = '';
-      //         str += `<div class="col-md-6 pt-5 d-flex justify-content-center">
-      //                     <div class="card" style="width: 24rem;">
-      //                         <img src="${items[i].Picture1}" class="card-img-top" alt="...">
-      //                         <div class="card-body">
-      //                             <h5 class="card-title">${items[i].Name}</h5>
-      //                             <p class="card-text">${items[i].Description}</p>
-      //                         </div>
-      //                     </div>
-      //                 </div>`
-      //         $('#information').append(str);
-      //     }
-      // }
-
+      }
     }
+  }); //回到最上層
+
+  $(window).scroll(function () {
+    var windowHeight = $(window).height();
+    var thisPos = $(window).scrollTop();
+    console.log(windowHeight, thisPos);
+
+    if (windowHeight < thisPos) {
+      $('#arrow_display').removeClass('d-none');
+    } else if (windowHeight > thisPos) {
+      $('#arrow_display').addClass('d-none');
+    }
+  });
+  $('#arrow_slide').click(function (e) {
+    e.preventDefault();
+    $('html,body').animate({
+      scrollTop: 0
+    }, 500);
   });
 });
 //# sourceMappingURL=all.js.map

@@ -7342,4 +7342,9 @@ a.text-dark:hover, a.text-dark:focus {
   width: 350px;
   height: 40px; }
 
+.arrow_space {
+  position: fixed;
+  right: 5%;
+  bottom: 5%; }
+
 /*# sourceMappingURL=all.css.map */
