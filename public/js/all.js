@@ -3,7 +3,8 @@
 $(document).ready(function () {
   $.ajax({
     method: "GET",
-    url: "https://data.kcg.gov.tw/api/action/datastore_search?resource_id=92290ee5-6e61-456f-80c0-249eae2fcc97",
+    dataType: 'json',
+    url: "https://raw.githubusercontent.com/hexschool/KCGTravel/master/datastore_search.json",
     success: function success(msg) {
       var items = msg.result.records;
       ListArea();
@@ -46,7 +47,7 @@ $(document).ready(function () {
           for (var i = 0; i < items.length; i++) {
             if (choose == items[i].Zone) {
               title = "<h1 class=\"text-primary text-center pt-5\">".concat(items[i].Zone, "</h1>");
-              str += "\n                                    <div class=\"col-md-6 pt-5 d-flex justify-content-center\">\n                                        <div class=\"card\" style=\"width: 24rem;\">\n                                            <img src=\"".concat(items[i].Picture1, "\" class=\"card-img-top\" alt=\"...\">\n                                            <div class=\"card-body\">\n                                                <h5 class=\"card-title\">").concat(items[i].Name, "</h5>\n                                                <p class=\"card-text\">").concat(items[i].Description, "</p>\n                                            </div>\n                                        </div>\n                                    </div>");
+              str += "\n\t\t\t\t\t\t\t\t<div class=\"col-md-6 pt-5 d-flex justify-content-center\">\n\t\t\t\t\t\t\t\t\t<div class=\"card\" style=\"width: 24rem;\">\n\t\t\t\t\t\t\t\t\t\t<img src=\"".concat(items[i].Picture1, "\" class=\"card-img-top\" alt=\"...\">\n\t\t\t\t\t\t\t\t\t\t<div class=\"card-body\">\n\t\t\t\t\t\t\t\t\t\t\t<h5 class=\"card-title\">").concat(items[i].Name, "</h5>\n\t\t\t\t\t\t\t\t\t\t\t<p class=\"card-text\">").concat(items[i].Description, "</p>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>");
             }
           }
 
@@ -60,23 +61,7 @@ $(document).ready(function () {
             scrollTop: windowHeight
           }, 500);
         });
-      } //景點內容
-      // function info() {
-      //     for (var i = 0; i < items.length; i++) {
-      //         var str = '';
-      //         str += `<div class="col-md-6 pt-5 d-flex justify-content-center">
-      //                     <div class="card" style="width: 24rem;">
-      //                         <img src="${items[i].Picture1}" class="card-img-top" alt="...">
-      //                         <div class="card-body">
-      //                             <h5 class="card-title">${items[i].Name}</h5>
-      //                             <p class="card-text">${items[i].Description}</p>
-      //                         </div>
-      //                     </div>
-      //                 </div>`
-      //         $('#information').append(str);
-      //     }
-      // }
-
+      }
     }
   });
 });

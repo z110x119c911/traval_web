@@ -138,7 +138,7 @@ gulp.task('watch', function (done) {
 //依序執行任務
 gulp.task('default',
     gulp.parallel(
-        /*'copyHTML' ,*/ 'sass', 'babel', 'bower',
+        'copyHTML' , 'sass', 'babel', 'bower',
          'vendorJs', 'browser-sync' , 'watch')
 )
 //發佈正式版依序執行任務
@@ -149,6 +149,6 @@ gulp.task('default',
 gulp.task('build',
     gulp.series(
         'clean', 'bower' , 'vendorJs' ,
-    gulp.parallel(/*'copyHTML' , */ 'sass' , 'babel')
+    gulp.parallel('copyHTML' , 'sass' , 'babel')
     )
 )
